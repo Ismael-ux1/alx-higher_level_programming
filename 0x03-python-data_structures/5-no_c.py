@@ -9,8 +9,6 @@ def no_c(my_string):
     Returns:
     A new string with all characters c and C removed.
     """
-    new_string = ""
-    for char in my_string:
-        if char != "c" and char != "C":
-            new_string += char
-        return new_string
+    new_string = ''.join(char for char in my_string if char.lower() != 'c')
+    
+    return new_string
