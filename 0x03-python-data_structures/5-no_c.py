@@ -9,5 +9,7 @@ def no_c(my_string):
   Returns:
     A new string with all characters c and C removed.
     """
-    my_string = my_string.translate({ord(i): None for i in "Cc"})
-    return (my_string)
+    new_string = ''.join(
+    [char for char in my_string if char not in ['c', 'C']]
+)
+    return new_string
