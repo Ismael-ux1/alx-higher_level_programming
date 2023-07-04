@@ -1,0 +1,40 @@
+print_square = __import__('4-print_square').print_square
+
+# Print a square of size 4
+print_square(4)
+# ####
+# ####
+# ####
+# ####
+
+# Check if size is a string
+try:
+    print_square("ismael")
+except TypeError as e:
+    print(e)
+    # size must be an integer
+
+# Check if size is negative
+try:
+    print_square(-8)
+except ValueError as e:
+    print(e)
+    # size must be >= 0
+
+# Check if size is a float and less than 0
+try:
+    print_square(-8.4)
+except TypeError as e:
+    print(e)
+    # size must be an integer
+
+# Check if size is 0
+print_square(0)
+
+# Check if no value is passed
+try:
+    print_square()
+except TypeError as e:
+    print(e)
+    # print_square() missing 1 required positional argument: 'size'
+
