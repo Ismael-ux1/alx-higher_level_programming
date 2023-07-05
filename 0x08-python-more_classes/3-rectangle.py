@@ -49,4 +49,7 @@ class Rectangle:
         """ String representation of the Rectangle oject """
         if self.__width == 0 or self.__height == 0:
             return ""
-        return ((("#" * self.__width) + "\n") * self.__height)[:-1]
+        rectangle_str = ""
+        for _ in range(self.__height):
+            rectangle_str += "#" * self.__width + "\n"
+            return rectangle_str.rstrip("\n")
