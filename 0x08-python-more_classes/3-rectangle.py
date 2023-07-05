@@ -50,9 +50,6 @@ class Rectangle:
 
         Represents the rectangle with the # character
         """
-        if self.__width == 0 or self.__height == 0:
+        if self.width == 0 or self.height == 0:
             return ""
-        rectangle_str = ""
-        for _ in range(self.__height):
-            rectangle_str += "#" * self.__width + "\n"
-            return rectangle_str.rstrip("\n")
+        return ((("#" * self.width) + "\n") * self.height)[:-1]
