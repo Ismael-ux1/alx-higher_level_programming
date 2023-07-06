@@ -61,6 +61,10 @@ class Rectangle:
             rect_str += str(self.print_symbol) * self.__width + '\n'
         return rect_str[:-1]
 
+    @classmethod
+    def square(cls, size=0):
+        return cls(size, size)
+
     def __repr__(self):
         """ Return the rectangle using eval. """
         return f"Rectangle({self.__width}, {self.__height})"
@@ -79,7 +83,3 @@ class Rectangle:
         if rect_1.area() >= rect_2.area():
             return rect_1
         return rect_2
-
-    @classmethod
-    def square(cls, size=0):
-        return cls(size, size)
