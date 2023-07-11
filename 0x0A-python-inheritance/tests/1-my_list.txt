@@ -1,0 +1,44 @@
+class MyList(list):
+    """
+    A custom list class that inherits from the built-in list class.
+
+    Public instance method:
+    - print_sorted(self): prints the list in ascending order.
+    """
+    ...
+
+    Examples:
+    >>> MyList = __import__('1-my_list').MyList
+
+    >>> m_doc = MyList.print_sorted.__doc__
+    >>> len(m_doc) > 1
+    True
+
+    >>> my_list = MyList([3, 1, 2])
+    >>> my_list.print_sorted()
+    [1, 2, 3]
+
+    >>> my_list = MyList([5, 4, 3, 2, 1])
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+
+    >>> my_list = MyList([])
+    >>> my_list.print_sorted()
+    []
+
+    >>> my_list = MyList([7])
+    >>> my_list.print_sorted()
+    [7]
+
+    >>> my_list = MyList([-6, -146, -73, -8])
+    >>> my_list.print_sorted()
+    [-146, -73, -8, -6]
+    
+
+    def print_sorted(self):
+        """
+        Print the list in ascending order.
+        """
+        sorted_list = sorted(self)
+        print(sorted_list)
+
