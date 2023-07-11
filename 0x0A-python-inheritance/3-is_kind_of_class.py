@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" A function that Check if an object is an instance of a specified class or its subclass. """
+""" A function that Check if an object is an instance of a specified class """
 
 
 def is_kind_of_class(obj, a_class):
