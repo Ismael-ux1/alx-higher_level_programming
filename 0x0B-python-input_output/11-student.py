@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-""" A a class Student that defines a student by Public instance attributes."""
-
-
-import sys
+""" A class that defines a student by Public instance attributes."""
 
 
 class Student:
