@@ -5,12 +5,6 @@
 import sys
 
 
-if len(sys.argv) < 2:
-    print("Usage: python script.py <filename>")
-    sys.exit(1)
-
-path = sys.argv[1]
-
 class Student:
     """
     Class representing a student.
