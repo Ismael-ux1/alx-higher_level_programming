@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Defines the a Rectangle Object.
+Defines the a Rectangle class.
 """
 
 
@@ -63,6 +63,10 @@ class Rectangle:
 
     @classmethod
     def square(cls, size=0):
+        if not isinstance(size, int):
+            raise TypeError("size must be an integer")
+        if size < 0:
+            raise ValueError("width must be >= 0")
         return cls(size, size)
 
     def __repr__(self):
