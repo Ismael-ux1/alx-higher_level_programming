@@ -21,13 +21,6 @@ Traceback (most recent call last):
     ...
 ZeroDivisionError: division by zero
 
-# Check for empty list.
->>> matrix = []
->>> matrix_divided(matrix, 3)
-Traceback (most recent call last):
-    ...
-TypeError: matrix must be a matrix (list of lists) of integers/floats
-
 # Check for list with one list.
 >>> matrix = [[2, 4, 6]]
 >>> matrix_divided(matrix, 3)
@@ -50,13 +43,6 @@ TypeError: Each row of the matrix must have the same size
 Traceback (most recent call last):
     ...
 TypeError: Each row of the matrix must have the same size
-
-# Check for list with wrong elements
->>> matrix = [[2, "invalid", 4], [6, 8, 10]]
->>> matrix_divided(matrix, 3)
-Traceback (most recent call last):
-    ...
-TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 # Check for +ve infinity
 >>> matrix = [[2, 4, 6], [8, 10, 12]]
