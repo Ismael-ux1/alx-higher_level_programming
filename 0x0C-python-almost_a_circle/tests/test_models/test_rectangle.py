@@ -89,6 +89,57 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError):
             rect = Rectangle(10, 20, 2, -4, 1)
 
+    def test_rectangle_display_with_position(self):
+        # Create a rectangle with x = 2 and y = 3
+        rect = Rectangle(3, 4, 2, 3)
+
+        # Capture the printed output
+        captured_output = io.StringIO()
+        with patch('sys.stdout', new=captured_output):
+            # Call the display method
+            rect.display()
+
+        # Check the displayed output
+        expected_output = "    ###\n    ###\n    ###\n    ###\n"
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
+    def test_rectangle_update(self):
+        # Create a rectangle
+        rect = Rectangle(10, 20, 2, 4, 1)
+
+        # Update the rectangle with arguments
+        rect.update(2, 15, 25, 5, 8)
+
+        # Check the updated attributes
+        self.assertEqual(rect.id, 2)
+        self.assertEqual(rect.width, 15)
+        self.assertEqual(rect.height, 25)
+        self.assertEqual(rect.x, 5)
+        self.assertEqual(rect.y, 8)
+
+        # Update the rectangle using keyword arguments
+        rect.update(width=30, y=10)
+
+        # Check the update attributes
+        self.assertEqual(rect.width, 30)
+        self.assertEqual(rect.height, 25)
+        self.assertEqual(rect.x, 5)
+        self.assertEqual(rect.y, 10)
+
+    def test_rectangle_display_with_position(self):
+        # Creat a rectangle with x = 2 and y = 3
+        rect = Rectangle(3, 4, 2, 3)
+
+        # Capture the printed output
+        captured_output = io.StringIO()
+        with patch('sys.stdout', new=captured_output):
+            # Call the display method
+            rect.display()
+
+        # Check the displayed output
+        expected_output = "\n    ###\n    ###\n    ###\n    ###\n"
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
 
 if __name__ == '__main__':
     unittest.main()

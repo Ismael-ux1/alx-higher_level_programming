@@ -122,8 +122,20 @@ class Rectangle(Base):
         rect2 = f"{self.__width}/{self.__height}"
         return f"[Rectangle] {rect1} - {rect2}"
 
-    def update(self, *args):
-        """Assign arguments to each attribute of the Rectangle instance."""
+    def update(self, *args, **kwargs):
+        """
+        Assign arguments to attribute of the Rectangle
+        instance using key/value pairs.
+
+        Args:
+          *args: Positional arguments.
+          **kwargs: Key-Value arguments representing attributes to update.
+
+        Notes:
+           - If *args exists and is not empty, **kwargs isskipped.
+           - Each key in **kwargs represents an attribute of the Rectangle
+           - Argument order is not important when using **kwargs.
+        """
         if len(args) > 0:
             self.id = args[0]
         if len(args) > 1:
@@ -134,3 +146,6 @@ class Rectangle(Base):
             self.x = args[3]
         if len(args) > 4:
             self.y = args[4]
+        if len(kwargs) > 0:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
