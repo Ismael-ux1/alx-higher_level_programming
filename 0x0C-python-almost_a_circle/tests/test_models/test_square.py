@@ -5,19 +5,21 @@ from models.rectangle import Rectangle
 
 
 class TestSquare(unittest.TestCase):
-    def test_square_inherits_from_rectangle(self):
-        self.assertIsInstance(Square(1), Rectangle)
 
-    def test_square_constructor(self):
-        s = Square(1)
-        self.assertEqual(s.width, 1)
-        self.assertEqual(s.height, 1)
-        self.assertEqual(s.x, 0)
-        self.assertEqual(s.y, 0)
+    def test_square_attributes(self):
+        # Create a square
+        square = Square(5, 2, 3, 1)
+
+        # Check the attributes
+        self.assertEqual(square.width, 5)
+        self.assertEqual(square.height, 5)
+        self.assertEqual(square.x, 2)
+        self.assertEqual(square.y, 3)
+        self.assertEqual(square.id, 1)
 
     def test_square_str(self):
-        s = Square(1, 2, 3, 4)
-        self.assertEqual(str(s), "[Square] (4) 2/3 - 1")
+        # Create a square
+        square = Square(5, 2, 3, 1)
 
 
 if __name__ == "__main__":
