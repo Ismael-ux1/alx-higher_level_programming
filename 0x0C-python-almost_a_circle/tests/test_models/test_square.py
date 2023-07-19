@@ -21,6 +21,25 @@ class TestSquare(unittest.TestCase):
         # Create a square
         square = Square(5, 2, 3, 1)
 
+    def test_square_size_getter(self):
+        # Create a square
+        square = Square(5, 2, 3, 1)
+
+        # Check the getter for the size
+        self.assertEqual(square.size, 5)
+
+    def test_square_size_setter(self):
+        # Create a square
+        square = Square(5, 2, 3, 1)
+
+        # Update the size using the setter
+        square.size = 10
+
+        # Check the updated size and the width and height are equal
+        self.assertEqual(square.size, 10)
+        self.assertEqual(square.width, 10)
+        self.assertEqual(square.height, 10)
+
 
 if __name__ == "__main__":
     unittest.main()
