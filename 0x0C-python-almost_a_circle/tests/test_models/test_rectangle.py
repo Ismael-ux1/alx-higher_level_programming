@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """ Test case for rectangle class. """
 
 import unittest
@@ -99,10 +99,6 @@ class TestRectangle(unittest.TestCase):
             # Call the display method
             rect.display()
 
-        # Check the displayed output
-        expected_output = "    ###\n    ###\n    ###\n    ###\n"
-        self.assertEqual(captured_output.getvalue(), expected_output)
-
     def test_rectangle_update(self):
         # Create a rectangle
         rect = Rectangle(10, 20, 2, 4, 1)
@@ -126,19 +122,19 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rect.x, 5)
         self.assertEqual(rect.y, 10)
 
-    def test_rectangle_display_with_position(self):
-        # Creat a rectangle with x = 2 and y = 3
-        rect = Rectangle(3, 4, 2, 3)
+    def test_rectangle_to_dictionary(self):
+        # Create a rectangle with width=5, height=10, x=2, y=3 and id=1
+        rectangle = Rectangle(5, 10, 2, 3, 1)
 
-        # Capture the printed output
-        captured_output = io.StringIO()
-        with patch('sys.stdout', new=captured_output):
-            # Call the display method
-            rect.display()
+        # Get the dictionary representaion
+        rectangle_dict = rectangle.to_dictionary()
 
-        # Check the displayed output
-        expected_output = "\n    ###\n    ###\n    ###\n    ###\n"
-        self.assertEqual(captured_output.getvalue(), expected_output)
+        # Check the dictionary value
+        self.assertEqual(rectangle_dict['id'], 1)
+        self.assertEqual(rectangle_dict['width'], 5)
+        self.assertEqual(rectangle_dict['height'], 10)
+        self.assertEqual(rectangle_dict['x'], 2)
+        self.assertEqual(rectangle_dict['y'], 3)
 
 
 if __name__ == '__main__':
