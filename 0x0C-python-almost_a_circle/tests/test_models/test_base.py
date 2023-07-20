@@ -25,6 +25,19 @@ class TestBase(unittest.TestCase):
             # Check if the custom ID is assigned correctly
             self.assertEqual(b.id, 10)
 
+        def test_to_json_string_empty(self):
+            """ Test to_json_string with an empty list. """
+            self.assertEqual(Base.to_json_string(None), "[]")
+            self.assertEqual(Base.to_json_string([]), "[]")
+
+        def test_to_json_string(self):
+            """ Test to_json_string with a non empty list of dictionaries. """
+            json_string = [{'id': 1, 'name': 'Alice'}, {'id': 2, 'name': "Bob"}]
+            json_string = Base.to_json_string(json_string)
+        self.assertEqual(type(json_string), str)
+        self.assertEqual(json_string, '[{id": 1, "name": "Alice"}, '
+                         '{"id": 2, "name": "Bob"}]')
+
 
 if __name__ == '__main__':
     unittest.main()
