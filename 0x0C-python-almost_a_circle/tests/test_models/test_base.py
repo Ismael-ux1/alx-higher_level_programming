@@ -85,6 +85,47 @@ class TestBase(unittest.TestCase):
             self.assertEqual(data, [s1.to_dictionary(), s2.to_dictionary()])
         os.remove("Square.json")
 
+    def test_create_rectangle(self):
+        # Create a dictionary with attributes for Rectangle
+        rectangle_dict = {"width": 4, "height": 6, "x": 2, "y": 3}
+
+        # Create an instance of Rectangle using create method
+        rectangle_instance = Rectangle.create(**rectangle_dict)
+
+        # Check if the instance is of the correct class
+        self.assertIsInstance(rectangle_instance, Rectangle)
+
+        # Check if the attributes are set correctly
+        self.assertEqual(rectangle_instance.width, 4)
+        self.assertEqual(rectangle_instance.height, 6)
+        self.assertEqual(rectangle_instance.x, 2)
+        self.assertEqual(rectangle_instance.y, 3)
+
+    def test_create_square(self):
+        # Create a dictionary with attributes for Square
+        square_dict = {"size": 5, "x": 1, "y": 2}
+
+        # Create an instance of Square using create method
+        square_instance = Square.create(**square_dict)
+
+        # Check if the instance is of the correct class
+        self.assertIsInstance(square_instance, Square)
+
+        # Check if the attributes are set correctly
+        self.assertEqual(square_instance.size, 5)
+        self.assertEqual(square_instance.x, 1)
+        self.assertEqual(square_instance.y, 2)
+
+    def test_create_invalid_class(self):
+        # Create a dictionary with attributes for an unknown class
+        invalid_dict = {"attribute1": 10, "attribute2": 20}
+
+        # Create an instance using create method, for an unknown class
+        instance = Base.create(**invalid_dict)
+
+        # Check if the instance is None, as class is unknown
+        self.assertIsNone(instance)
+
 
 if __name__ == '__main__':
     unittest.main()

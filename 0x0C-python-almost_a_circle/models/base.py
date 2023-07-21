@@ -55,3 +55,30 @@ class Base:
                 json_list.append(obj.to_dictionary())
         with open(filename, "w") as file:
             file.write(cls.to_json_string(json_list))
+
+    @staticmethod
+    def create(cls, **dictionary):
+        if cls.__name__ == "Rectangle":
+            # Create a dummy instance
+            new_instance = cls(1, 1)
+        elif cls.__name__ == "Square":
+            # Create a dummy instance
+            new_instance = cls(1)
+
+        # Apply the real values using update method
+        new_instance.update(**dictionary)
+        return new_instance
+
+    @classmethod
+    def create(cls, **dictionary):
+        if cls.__name__ == "Rectangle":
+            # Create a dummy instance of Rectangle
+            dummy_instance = cls(1, 1)
+        elif cls.__name__ == "Square":
+            # Create a dummy instance of a Square
+            dummy_instance = cls(1)
+        else:
+            return None
+        # Update the dummy instance with attributes from dictionary
+        dummy_instance.update(**dictionary)
+        return dummy_instance
