@@ -48,6 +48,22 @@ class TestBase(unittest.TestCase):
         json_string = Base.to_json_string(list_dictionaries)
         self.assertEqual(json_string, '[{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]')
 
+    def test_from_json_string_empty(self):
+        # Test when the JSON string is empty
+        json_string = ""
+        self.assertEqual(Base.from_json_string(json_string), [])
+
+    def test_from_json_string_none(self):
+        # Test when the JSON string is None
+        json_string = None
+        self.assertEqual(Base.from_json_string(json_string), [])
+
+    def test_from_json_string(self):
+        # Test when the JSON string represents a list of dictionaries
+        json_string = '[{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]'
+        expected_result = [{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]
+        self.assertEqual(Base.from_json_string(json_string), expected_result)
+
     def test_base_save_to_file(self):
         # Test save_to_file method with list of Rectangles
         r1 = Rectangle(10, 7, 2, 8)
