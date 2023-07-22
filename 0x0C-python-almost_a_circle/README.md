@@ -29,6 +29,7 @@ All your tests should be executed using the command: python3 -m unittest discove
 Individual test files can be executed using the command: python3 -m unittest tests/test_models/test_base.py
 Collaboration on test cases is encouraged to cover all edge cases
 Classes
+
 Base
 Represents the "base" class for all other classes in the project. It includes the following features:
 
@@ -43,6 +44,8 @@ Class method def load_from_file(cls): Returns a list of objects instantiated fro
 Class method def save_to_file_csv(cls, list_objs): Writes the CSV serialization of a list of objects to a file. The parameter list_objs is expected to be a list of Base-inherited instances. If list_objs is None, the function saves an empty list. The file is saved with the name <cls name>.csv (e.g., Rectangle.csv). It serializes objects in the format <id>,<width>,<height>,<x>,<y> for Rectangle objects and <id>,<size>,<x>,<y> for Square objects.
 Class method def load_from_file_csv(cls): Returns a list of objects instantiated from a CSV file. It reads from the CSV file <cls name>.csv (e.g., Rectangle.csv). If the file does not exist, the function returns an empty list.
 Static method def draw(list_rectangles, list_squares): Draws Rectangle and Square instances in a GUI window using the turtle module. The parameter list_rectangles is expected to be a list of Rectangle objects to print. The parameter list_squares is expected to be a list of Square objects to print.
+
+
 Rectangle
 Represents a rectangle that inherits from Base. It includes the following features:
 
@@ -54,6 +57,8 @@ Public method def display(self): Prints the Rectangle instance to stdout using t
 Overwrite of __str__ method to print a Rectangle instance in the format [Rectangle] (<id>) <x>/<y>.
 Public method def update(self, *args, **kwargs): Updates an instance of a Rectangle with the given attributes. *args must be supplied in the following order: 1st: id, 2nd: width, 3rd: height, 4th: x, 5th: y. **kwargs is expected to be a double pointer to a dictionary of new key/value attributes to update the Rectangle with. **kwargs is skipped if *args exists.
 Public method def to_dictionary(self): Returns the dictionary representation of a Rectangle instance.
+
+
 Square
 Represents a square that inherits from Rectangle. It includes the following features:
 
