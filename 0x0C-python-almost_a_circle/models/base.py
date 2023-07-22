@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Base class to manage ID attribute. """
 import json
+import csv
 
 
 class Base:
@@ -82,3 +83,60 @@ class Base:
         # Update the dummy instance with attributes from dictionary
         dummy_instance.update(**dictionary)
         return dummy_instance
+
+    @classmethod
+    def load_from_file(cls):
+        filename = cls.__name__ + '.json'
+        try:
+            with open(filename, 'r') as file:
+                json_data = file.read()
+        except FileNotFoundError:
+            return []
+
+        list_dicts = Base.from_json_string(json_data)
+        instances_list = []
+        for dictionary in list_dicts:
+            instance = cls.create(**dictionary)
+            instances_list.append(instance)
+        return instances_list
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        filename = cls.__name__ + ".csv"
+        with open(filename, mode="w", newline="") as file:
+            writer = csv.writer(file)
+            if list_objs is not None:
+                for obj in list_objs:
+                    if cls.__name__ == "Rectangle":
+                        row = [obj.id, obj.width, obj.height, obj.x, obj.y]
+                    elif cls.__name__ == "Square":
+                        row = [obj.id, obj.size, obj.x, obj.y]
+                    writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, mode="r", newline="") as file:
+                reader = csv.reader(file)
+                list_objs = []
+                for row in reader:
+                    if cls.__name__ == "Rectangle":
+                        dict = {
+                            "id": int(row[0]),
+                            "width": int(row[1]),
+                            "height": int(row[2]),
+                            "x": int(row[3]),
+                            "y": int(row[4])
+                        }
+                    elif cls.__name__ == "Square":
+                        dict = {
+                            "id": int(row[0]),
+                            "size": int(row[1]),
+                            "x": int(row[2]),
+                            "y": int(row[3])
+                        }
+                    list_objs.append(cls.create(**dict))
+                return list_objs
+        except FileNotFoundError:
+            return []

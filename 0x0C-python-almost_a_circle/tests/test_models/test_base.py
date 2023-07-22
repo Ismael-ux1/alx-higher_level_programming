@@ -126,6 +126,70 @@ class TestBase(unittest.TestCase):
         # Check if the instance is None, as class is unknown
         self.assertIsNone(instance)
 
+        def test_load_from_file(self):
+            # Create some instances and save them to a JSON file
+            r1 = Rectangle(3, 5, 1)
+            r2 = Rectangle(4, 2)
+            s1 = Square(2)
+            s2 = Square(3, 1, 4)
+            instances_list = [r1, r2, s1, s2]
+
+            filename = "TestLoadFromFile.json"
+            Base.save_to_file(instances_list)
+
+            # Load instances from the JSON file
+            loaded_instances = Base.load_from_file()
+
+            # Clean up the created file
+            os.remove(filename)
+
+            # Check if the loaded instances are of the correct types
+            self.assertIsInstance(loaded_instances[0], Rectangle)
+            self.assertIsInstance(loaded_instances[1], Rectangle)
+            self.assertIsInstance(loaded_instances[2], Square)
+            self.assertIsInstance(loaded_instances[3], Square)
+
+            # Check if the loaded instances have the correct attributes
+            self.assertEqual(loaded_instances[0].width, 3)
+            self.assertEqual(loaded_instances[0].height, 5)
+            self.assertEqual(loaded_instances[0].x, 1)
+            self.assertEqual(loaded_instances[0].y, 0)
+            
+            self.assertEqual(loaded_instances[1].width, 4)
+            self.assertEqual(loaded_instances[1].height, 2)
+            self.assertEqual(loaded_instances[1].x, 0)
+            self.assertEqual(loaded_instances[1].y, 0)
+            
+            self.assertEqual(loaded_instances[2].size, 2)
+            self.assertEqual(loaded_instances[2].x, 0)
+            self.assertEqual(loaded_instances[2].y, 0)
+
+            self.assertEqual(loaded_instances[3].size, 3)
+            self.assertEqual(loaded_instances[3].x, 1)
+            self.assertEqual(loaded_instances[3].y, 4)
+
+        def test_save_to_file_csv(self):
+            # Test code for save_to_file_csv method with CSV format
+            r1 = Rectangle(3, 5, 1)
+            r2 = Rectangle(4, 6, 2)
+            Rectangle.save_to_file_csv([r1, r2])
+            filename = "Rectangle.csv"
+            self.assertTrue(os.path.isfile(filename))
+
+    def test_load_from_file_csv(self):
+        # Test code for load_from_file_csv method with CSV format
+        filename = "Rectangle.csv"
+        if os.path.isfile(filename):
+            os.remove(filename)
+
+        r1 = Rectangle(3, 5, 1)
+        r2 = Rectangle(4, 6, 2)
+        Rectangle.save_to_file_csv([r1, r2])
+
+        rectangles = Rectangle.load_from_file_csv()
+        self.assertIsInstance(rectangles, list)
+        self.assertTrue(all(isinstance(r, Rectangle) for r in rectangles))
+
 
 if __name__ == '__main__':
     unittest.main()
