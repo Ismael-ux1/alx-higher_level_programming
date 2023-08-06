@@ -6,7 +6,7 @@ if __name__ == '__main__':
     Calculate and print the result of an arithmetic operation.
     """
     if len(sys.argv) != 4:
-        print("Usage:./100-my_calculator.py <a> <operator> <b>")
+        print("./100-my_calculator.py <a> <operator> <b>")
         sys.exit(1)
 
     oop = {"+": add, "-": sub, "*": mul, "/": div}
