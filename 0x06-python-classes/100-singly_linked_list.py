@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-# Class Node that defines a node of a singly linked list
+
+""" Class Node that defines a node of a singly linked list """
 
 
 class Node:
@@ -27,6 +28,8 @@ class Node:
             raise TypeError("next_node must be a Node object")
         self.__next_node = value
 
+
+""" class that defines a singly lined list """
 
 class SinglyLinkedList:
     def __init__(self):
