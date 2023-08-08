@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
 """ A class that defines a square """
 
 
@@ -82,8 +81,9 @@ class Square:
 
         Returns:
         - int: The area of the square.
-        """
+        """ 
         return self.__size ** 2
+
 
     def my_print(self):
         """
@@ -97,19 +97,5 @@ class Square:
             for _ in range(self.__position[1]):
                 print()
             for _ in range(self.__size):
-                print(" " * self.__position[0] + "#" * self.__size)
-
-    
-    def __str__(self):
-        """
-        Override the __str__ method to provide a custom output pattern.
-        """
-        if self.__size == 0:
-            return ""
-        result = []
-        for _ in range(self.__position[1]):
-            result.append("")
-
-        for _ in range(self.__size):
-            result.append(" " * self.__position[0] + "#" * self.__size + "$")
-            return '\n'.join(result)
+                print(" " * self.__position[0], end="")
+                print("#" * self.__size)  
