@@ -4,12 +4,14 @@ Python - Classes and Objects
 Description
 
 This project introduced me to the fundamentals of Object-Oriented Programming (OOP) in Python. I explored key OOP principles such as Inheritance, Polymorphism, Abstraction, and Encapsulation. Through the implementation of classes and objects, I gained valuable experience in creating and working with objects, defining classes, and using various object-oriented techniques to solve problems efficiently.
+
+
 What I Learned
 
-    Understanding and applying the principles of Inheritance, Polymorphism, Abstraction, and Encapsulation in Python.
-    Creating and defining classes to represent objects and their behavior.
-    Implementing methods and attributes within classes to perform specific tasks.
-    Leveraging object-oriented concepts for organized and efficient code.
+- Understanding and applying the principles of Inheritance, Polymorphism, Abstraction, and Encapsulation in Python.
+-  Creating and defining classes to represent objects and their behavior.
+-   Implementing methods and attributes within classes to perform specific tasks.
+-   Leveraging object-oriented concepts for organized and efficient code.
 
 Tasks
 
