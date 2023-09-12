@@ -5,4 +5,6 @@ function add (a, b) {
 }
 
 // Export the add function to make it visible from outside
-module.exports = add;
+module.exports = {
+  add
+};
