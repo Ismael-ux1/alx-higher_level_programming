@@ -6,7 +6,7 @@ function findSecondLargest (numbers) {
     return 0; // If there are no or only one number, return 0
   }
 
-  let largest = Math.max(...numbers);
+  const largest = Math.max(...numbers);
   let secondLargest = -Infinity;
 
   for (const num of numbers) {
