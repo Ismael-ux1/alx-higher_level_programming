@@ -1,3 +1,4 @@
+#!/usr/bin/node
 let count = 0; // Initialize a count to keep track of the number of arguments printed
 
 exports.logMe = function (item) {
