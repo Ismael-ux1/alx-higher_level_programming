@@ -19,12 +19,8 @@ if __name__ == "__main__":
 
     # Execute a SQL command to fetch all states
     # where the name matches the user input
-    cur.execute(
-            "SELECT * FROM states "
-            "WHERE name = %s "
-            "ORDER BY states.id ASC",
-            (sys.argv[4],)
-            )
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'\
+                ORDER BY states.id ASC".format(sys.argv[4]))
 
     # Fetch all rows from the last executed SQL command
     rows = cur.fetchall()
