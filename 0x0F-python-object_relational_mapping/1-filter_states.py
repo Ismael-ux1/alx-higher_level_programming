@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# This is a Python script for listing states starting with 'N' from a database.
+""" This is a Python script for listing states starting with 'N' from a database."""
 
 import MySQLdb
 import sys
@@ -17,6 +17,3 @@ if __name__ == "__main__":
     # Print each row.
     for row in rows:
         print(row)
-    # Close the cursor and database connections.
-    cur.close()
-    db.close()
