@@ -16,10 +16,12 @@ if __name__ == "__main__":
     # Create a cursor object which allows us to execute SQL commands
     cur = db.cursor()
 
-    # Execute a SQL command to fetch all states
-    # where the name matches the user input
-    # The %s placeholder is used to avoid SQL injection attacks
-    cur.execute("SELECT * FROM cities ORDER BY id ASC")
+    # Execute a SQL command to fetch all cities from the 'cities' table
+    # The results are sorted in ascending order by 'id'
+    cur.execute("SELECT cities.id, cities.name, states.name\
+                FROM cities LEFT JOIN states\
+                ON states.id = cities.state_id\
+                ORDER BY cities.id ASC")
 
     # Fetch all rows from the last executed SQL command
     rows = cur.fetchall()
