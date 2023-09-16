@@ -30,8 +30,7 @@ if __name__ == "__main__":
     rows = cur.fetchall()
 
     # Print each row
-    for row in rows:
-        print(row[0], end=", ")
+    print(", ".join(row[0] for row in rows))
 
     # Close the cursor and database connections
     cur.close()
