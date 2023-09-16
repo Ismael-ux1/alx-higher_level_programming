@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" This is a Python script for listing states starting with 'N' from a database."""
+""" This is a Python script for listing states starting with 'N'
+from a database."""
 
 import MySQLdb
 import sys
