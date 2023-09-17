@@ -4,6 +4,7 @@ an instance Base = declarative_base().
 """
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
+from enum import unique
 
 # Create an instance of declarative_base
 Base = declarative_base()
@@ -16,5 +17,6 @@ class State(Base):
     __tablename__ = 'states'
 
     # Define the columns of the states table
-    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
+    id = Column(Integer, autoincrement=True,
+                primary_key=True, nullable=False, uniquet=True)
     name = Column(String(128), nullable=False)
