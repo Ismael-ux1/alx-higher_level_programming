@@ -9,10 +9,8 @@ from enum import unique
 # Create an instance of declarative_base
 Base = declarative_base()
 
-Base = declarative_base()
+
 # Define the state class
-
-
 class State(Base):
     # Specify the name of the database table
     __tablename__ = 'states'
