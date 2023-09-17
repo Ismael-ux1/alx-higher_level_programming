@@ -9,6 +9,7 @@ from enum import unique
 # Create an instance of declarative_base
 Base = declarative_base()
 
+Base = declarative_base())
 # Define the state class
 
 
@@ -18,5 +19,5 @@ class State(Base):
 
     # Define the columns of the states table
     id = Column(Integer, autoincrement=True,
-                primary_key=True, nullable=False, uniquet=True)
+                primary_key=True, nullable=False, unique=True)
     name = Column(String(128), nullable=False)
