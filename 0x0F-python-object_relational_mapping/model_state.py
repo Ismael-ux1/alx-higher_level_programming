@@ -6,15 +6,19 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 
-# Create an instance of declarative_base
+""" Create an instance of declarative_base """
 Base = declarative_base()
 
 
-# Define the state class
 class State(Base):
-    # Specify the name of the database table
-    __tablename__ = 'states'
+    """
+    This class definition represents the 'states' table in the database.
+    Attributes:
+    __tablename__ (str): The name of the database table.
+    id (int): An auto-generated, unique integer representing the primary key.
+    name (str): A string column with a maximum length of 128 characters.
+    """
 
-    # Define the id attribute
-    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
+    __tablename__ = "states"
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String(128), nullable=False)
