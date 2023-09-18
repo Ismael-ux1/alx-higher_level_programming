@@ -9,7 +9,18 @@ Base = declarative_base()
 
 
 class State(Base):
-    """State class"""
+    """Represents a state in the database.
+
+    This class defines the structure and properties of a State object,
+    including its name and a one-to-many relationship with City objects.
+
+    Attributes:
+        id (int): A unique identifier for the state.
+        name (str): The name of the state.
+        cities (relationship): A one-to-many relationship that links
+            the state to multiple City objects. This allows accessing
+            the cities associated with a particular state.
+    """
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     name = Column(String(128), nullable=False)
