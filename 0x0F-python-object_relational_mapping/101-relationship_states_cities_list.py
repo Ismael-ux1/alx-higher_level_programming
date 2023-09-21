@@ -11,23 +11,23 @@ from relationship_city import City
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-    # Create a SQLAlchemy engine
-    engine = create_engine(f"mysql+mysqldb://{sys.argv[1]}:{sys.argv[2]}@"
-                           f"localhost:3306/{sys.argv[3]}")
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
 
-    # Create a session
+    # Setup connection
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
+                           .format(username, password, db_name))
+
+    # Create a configured "Session" class and create a Session
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Query State objects and their related City objects
-    # using the cities relationship
-    states_with_cities = session.query(State).order_by(State.id).all()
-
-    # Iterate over the results and print them
-    for state in states_with_cities:
-        print(f"{state.id}: {state.name}")
+    # Query for all states and their corresponding cities
+    for state in session.query(State).order_by(State.id).all():
+        print("{}: {}".format(state.id, state.name))
         for city in state.cities:
-            print(f"    {city.id}: {city.name}")
+            print("    {}: {}".format(city.id, city.name))
 
     # Close the session
     session.close()
