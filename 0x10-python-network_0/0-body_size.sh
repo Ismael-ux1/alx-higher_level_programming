@@ -1,4 +1,3 @@
 #!/bin/bash
-# A Bash script that  GET request to the URL and,
-# display the size of the body of response in byte
+#This Bash script accepts a URL and sends a request to it.
 curl -s "$1" | wc -c
