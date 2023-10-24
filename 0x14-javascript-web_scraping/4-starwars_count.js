@@ -2,7 +2,7 @@
 const request = require('request');
 
 const url = process.argv[2];
-const characterId = '18';
+const characterId = '/18';
 
 request(url, (error, response, body) => {
   if (error) {
@@ -12,7 +12,7 @@ request(url, (error, response, body) => {
   const data = JSON.parse(body);
   let count = 0;
   data.results.forEach((movie) => {
-    if (movie.characters.includes(characterId)) {
+    if (movie.characters.some(characterUrl => characterUrl.endsWith(characterId))) {
       count += 1;
     }
   });
