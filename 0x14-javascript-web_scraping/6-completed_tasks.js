@@ -21,5 +21,5 @@ request(url, (error, response, body) => {
     }
   });
 
-    console.log(completedTasks);
+  console.log(completedTasks);
 });
