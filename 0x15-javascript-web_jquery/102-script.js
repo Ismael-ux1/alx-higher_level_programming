@@ -1,20 +1,13 @@
-$(document).ready(function() {
-    // When the document is fully loaded, the code inside this function will run
-  
-    const apiUrl = 'https://www.fourtonfish.com/hellosalut/?';
-  
-    // Listen for a click on the button with the ID 'btn_translate'
-    $('input#btn_translate').click(function() {
-      // When the button is clicked, this function will execute
-  
-      // Build the API URL by adding the 'lang' parameter from the input field
-      const languageCode = $('input#language_code').val();
-      const fullApiUrl = apiUrl + $.param({ lang: languageCode });
-  
-      // Send a GET request to the API and handle the response
-      $.get(fullApiUrl, function(data) {
-        // When the API responds, update the content of the element with the ID 'hello'
-        $('div#hello').html(data.hello);
+// This code uses the jQuery API to get a greeting in different languages
+$(document).ready(function () {
+    // The url of the API service that returns the greeting
+    const url = 'https://www.fourtonfish.com/hellosalut/hello/';
+    // When the user clicks on the translate button, a GET request is sent to the API
+    $('INPUT#btn_translate').click(function () {
+      // The lang parameter is set to the value of the language code input
+      $.get(url + $.param({ lang: $('INPUT#language_code').val() }), function (data) {
+        // The hello div is updated with the greeting from the API response
+        $('DIV#hello').html(data.hello);
       });
     });
-  });  
+  });
