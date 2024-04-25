@@ -1,9 +1,11 @@
 #!/usr/bin/python3
-""" Python script: Get URL, send request, display Request-Id. """
+"""
+display X-Request-Id.
+"""
 import urllib.request
 import sys
 
-# Get the URL from command line areguments
+""" Get the URL from command line areguments """
 url = sys.argv[1]
 
 # Create a Request object with the provided URL
