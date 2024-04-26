@@ -1,13 +1,9 @@
 #!/usr/bin/python3
-"""
-This script retrieves the value of the X-Request-Id header,
-from a given URL's HTTP response.
-"""
+""" X-Request-Id header """
 import urllib.request
 import sys
 
-
-""" Get the URL from command line areguments """
+# Get the URL from command line areguments
 url = sys.argv[1]
 
 # Create a Request object with the provided URL
