@@ -3,20 +3,20 @@
 import urllib.request
 import sys
 
-# Get the URL from command line areguments
-url = sys.argv[1]
 
-# Create a Request object with the provided URL
-request = urllib.request.Request(url)
+def get_request_id(url):
+    """
+    Fetches the X-request-Id header from the given URL
 
-# Send a request to the URL
-with urllib.request.urlopen(request) as response:
-    # Get the value of the X-Request-ID variable from the header,
-    # of the response
-    request_id = response.headers.get('X-Request-Id')
+    Args:
+       url: The URL to send the request to.
+    Returns:
+       The value of the X-request-Id header or None if not found.
+    """
+    with urllib.request.urlopen(url) as response:
+        return response.getheader('X-Request-Id')
 
-    # Display the value of the X-Request-Id variable
-    if request_id:
-        print(request_id)
-    else:
-        print("No X-Request-Id header found in the HTTP response")
+
+if __name__ == "__main__":
+    url = sys.argv[1]
+    print(get_request_id(url))
