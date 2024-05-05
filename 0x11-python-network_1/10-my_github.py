@@ -7,8 +7,6 @@ import sys
 def get_github_id(username, token):
     url = f"https://api.github.com/users/{username}"
     response = requests.get(url, auth=(username, token))
-    if response.status_code == 401:
-        return None
     data = response.json()
     return data.get('id')
 
