@@ -10,7 +10,6 @@ import sys
 def send_post_request(letter=""):
     url = "http://0.0.0.0:5000/search_user"
     data = {"q": letter}
-
     try:
         response = requests.post(url, data=data)
         response_json = response.json()
